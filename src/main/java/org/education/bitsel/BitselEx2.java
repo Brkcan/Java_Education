@@ -2,8 +2,6 @@ package org.education.bitsel;
 
 import org.education.console.Console;
 
-import java.util.Arrays;
-
 /*
             ~                   --> bitwise not
             <<                  --> left shift
@@ -30,7 +28,7 @@ class WriteBitsIntTest{
     {
         for (;;) {
             var val = Console.readInt("Bir Sayi giriniz...", "Hatali Sayi girdiniz.");
-            Util.bitwiseExample(val);
+            Util.numberOfSetBits(val);
 
             if(val == 0)
                 break;
@@ -73,5 +71,17 @@ class Util {
                 break;
             }
         }
+    }
+    public static void numberOfSetBits(int val)
+    {
+        BitwiseUtil.writeBits(val);
+        var binary = Integer.toBinaryString(val);
+        var negatifBinary = Integer.toBinaryString(~val);
+        int count = 0 ;
+        for (int i = 0; i <= binary.length() - 1; i++) {
+            if(binary.charAt(i) == negatifBinary.charAt(i))
+                ++count;
+        }
+        System.err.println(count);
     }
 }

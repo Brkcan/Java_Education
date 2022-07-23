@@ -4,6 +4,7 @@ package org.education.console;
 import java.util.Scanner;
 
 public class Console {
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private Console() {}
 
@@ -28,17 +29,21 @@ public class Console {
         writeInt("%d", val);
     }
 
+    public static void writeLine(long val)
+    {
+        writeInt("%d", val);
+    }
+
     public static void writeInt(String str, Object... objects)
     {
         write(str + "\n", objects);
     }
 
     // READ
-    static Scanner scanner = new Scanner(System.in);
     public static void read(String str)
     {
         write(str);
-        int result = Integer.parseInt(scanner.nextLine());
+        int result = Integer.parseInt(SCANNER.nextLine());
         writeLine(result);
     }
 
@@ -46,7 +51,7 @@ public class Console {
     {
         try {
             write(str);
-            int result = Integer.parseInt(scanner.nextLine());
+            int result = Integer.parseInt(SCANNER.nextLine());
             writeLine(result);
         }catch (Exception ex) {
             write(error);
@@ -58,7 +63,7 @@ public class Console {
         int result = 0;
         try {
             write(str);
-            result = Integer.parseInt(scanner.nextLine());
+            result = Integer.parseInt(SCANNER.nextLine());
             writeLine(result);
         } catch (Exception ex) {
             write(error);
